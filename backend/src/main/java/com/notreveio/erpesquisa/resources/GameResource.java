@@ -16,13 +16,13 @@ import com.notreveio.erpesquisa.services.GameService;
 public class GameResource {
 	
 	@Autowired
-	private GameService gameService;
+	private GameService service;
 	
 	
 	@GetMapping
 	public ResponseEntity<List<GameDTO>> FindAll(){
-		List<GameDTO> list = gameService.FindAll();
-;		return ResponseEntity.ok().body(list);
+		List<GameDTO> list = service.FindAll();
+		return ResponseEntity.ok().body(list);
 	}
 
 }
