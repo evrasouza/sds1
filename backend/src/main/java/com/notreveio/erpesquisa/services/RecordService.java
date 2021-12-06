@@ -17,16 +17,16 @@ import com.notreveio.erpesquisa.repositories.RecordRepository;
 
 @Service
 public class RecordService {
-	
+
 	@Autowired
 	private RecordRepository repository;
-
+	
 	@Autowired
 	private GameRepository gameRepository;
-
+	
 	@Transactional
-	public RecordDTO insert(RecordInsertDTO dto){
-
+	public RecordDTO insert(RecordInsertDTO dto) {
+		
 		Record entity = new Record();
 		
 		entity.setName(dto.getName());
@@ -39,10 +39,9 @@ public class RecordService {
 		entity = repository.save(entity);
 		return new RecordDTO(entity);
 	}
-
+	
 	@Transactional(readOnly = true)
 	public Page<RecordDTO> findByMoments(Instant minDate, Instant maxDate, PageRequest pageRequest) {
 		return repository.findByMoments(minDate, maxDate, pageRequest).map(x -> new RecordDTO(x));
 	}
-
 }

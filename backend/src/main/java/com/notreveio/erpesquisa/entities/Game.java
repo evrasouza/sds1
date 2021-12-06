@@ -17,8 +17,7 @@ import com.notreveio.erpesquisa.entities.enums.Platform;
 
 @Entity
 @Table(name = "tb_game")
-public class Game implements Serializable{
-	
+public class Game implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,12 +29,11 @@ public class Game implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
 	private Genre genre;
-	
+
 	@OneToMany(mappedBy = "game")
 	private List<Record> records = new ArrayList<>();
 	
 	public Game() {
-		
 	}
 
 	public Game(Long id, String title, Platform platform, Genre genre) {
@@ -77,7 +75,7 @@ public class Game implements Serializable{
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
-
+	
 	public List<Record> getRecords() {
 		return records;
 	}
@@ -106,7 +104,4 @@ public class Game implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-
 }
